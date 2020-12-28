@@ -20,5 +20,6 @@
         <file>gamepad/xboxControllerRightThumbstick.png</file>
         <file>gamepad/xboxControllerRightTrigger.png</file>
         <file>gamepad/xboxControllerStart.png</file>
+        <file>trajectory/3d_points_view.qml</file>
     </qresource>
 </RCC>

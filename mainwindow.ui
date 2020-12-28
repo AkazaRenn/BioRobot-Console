@@ -14,52 +14,55 @@
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QWidget" name="verticalLayoutWidget">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>10</y>
-      <width>441</width>
-      <height>551</height>
-     </rect>
-    </property>
-    <layout class="QVBoxLayout" name="verticalLayout">
-     <item>
-      <widget class="QQuickWidget" name="tradjWidget">
-       <property name="resizeMode">
-        <enum>QQuickWidget::SizeRootObjectToView</enum>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QQuickWidget" name="cameraWidget">
-       <property name="resizeMode">
-        <enum>QQuickWidget::SizeRootObjectToView</enum>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QQuickWidget" name="gamepadWidget">
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
-       <property name="resizeMode">
-        <enum>QQuickWidget::SizeRootObjectToView</enum>
-       </property>
-       <property name="source">
-        <url>
-         <string>qrc:/gamepad/main.qml</string>
-        </url>
-       </property>
-      </widget>
-     </item>
-    </layout>
-   </widget>
+   <property name="sizePolicy">
+    <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+     <horstretch>0</horstretch>
+     <verstretch>0</verstretch>
+    </sizepolicy>
+   </property>
+   <layout class="QVBoxLayout" name="verticalLayout_4">
+    <item>
+     <widget class="QQuickWidget" name="tradjWidget">
+      <property name="resizeMode">
+       <enum>QQuickWidget::SizeRootObjectToView</enum>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QQuickWidget" name="cameraWidget">
+      <property name="resizeMode">
+       <enum>QQuickWidget::SizeRootObjectToView</enum>
+      </property>
+      <property name="source">
+       <url>
+        <string>qrc:/trajectory/3d_points_view.qml</string>
+       </url>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QQuickWidget" name="gamepadWidget">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="resizeMode">
+       <enum>QQuickWidget::SizeRootObjectToView</enum>
+      </property>
+      <property name="source">
+       <url>
+        <string>qrc:/gamepad/main.qml</string>
+       </url>
+      </property>
+     </widget>
+    </item>
+   </layout>
   </widget>
-  <widget class="QStatusBar" name="statusbar"/>
  </widget>
  <customwidgets>
   <customwidget>

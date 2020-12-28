@@ -57,8 +57,8 @@ import QtGamepad 1.0
 Item {
     id: applicationWindow1
     visible: true
-//    width: 800
-//    height: 600
+    width: 800
+    height: 600
 
     Item {
         id: background

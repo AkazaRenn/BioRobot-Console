@@ -1,6 +1,6 @@
 QT       += core gui
 
-greaterThan(QT_MAJOR_VERSION, 4): QT += widgets quickwidgets
+greaterThan(QT_MAJOR_VERSION, 4): QT += widgets quickwidgets webenginewidgets
 
 CONFIG += c++11
 
@@ -29,7 +29,8 @@ DISTFILES += \
     gamepad/JoystickViewer.qml \
     gamepad/LeftThumbstick.qml \
     gamepad/RightThumbstick.qml \
-    gamepad/main.qml
+    gamepad/main.qml \
+    trajectory/3d_points_view.qml
 
 RESOURCES += \
     resources.qrc
