@@ -68,7 +68,7 @@ Item {
         anchors.fill: buttonImage
         color: "#14abff"
         opacity: 0.6
-        radius: 8
+        radius: 4
         visible: active
     }
 

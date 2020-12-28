@@ -7,6 +7,7 @@
 #include <QQuickWidget>
 #include <QWebEngineView>
 #include <QWebEngineFullScreenRequest>
+#include <QTcpSocket>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }

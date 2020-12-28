@@ -66,7 +66,7 @@ Item {
         id: upArea
         visible: gamepad.buttonUp
         color: "#3814abff"
-        radius: 5
+        radius: 2.5
         anchors.top: parent.top
         anchors.horizontalCenter: parent.horizontalCenter
         width: parent.width * 0.3
@@ -77,7 +77,7 @@ Item {
         id: downArea
         visible: gamepad.buttonDown
         color: "#3814abff"
-        radius: 5
+        radius: 2.5
         width: parent.width * 0.3
         height: parent.height * 0.3
         anchors.bottom: parent.bottom
@@ -88,7 +88,7 @@ Item {
         id: leftArea
         visible: gamepad.buttonLeft
         color: "#3814abff"
-        radius: 5
+        radius: 2.5
         width: parent.width * 0.3
         height: parent.height * 0.3
         anchors.left: parent.left
@@ -100,7 +100,7 @@ Item {
         id: rightArea
         visible: gamepad.buttonRight
         color: "#3814abff"
-        radius: 5
+        radius: 2.5
         width: parent.width * 0.3
         height: parent.height * 0.3
         anchors.right: parent.right

@@ -10,9 +10,11 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
 
-//    setCentralWidget(m_view);
     ((QVBoxLayout*) ui->centralwidget->layout())->insertWidget(0, m_view);
     m_view->settings()->setAttribute(QWebEngineSettings::FullScreenSupportEnabled, true);
+    QSizePolicy m_view_size_policy = m_view->sizePolicy();
+    m_view_size_policy.setHorizontalPolicy(QSizePolicy::Expanding);
+    m_view->setSizePolicy(m_view_size_policy);
     connect(m_view->page(),
             &QWebEnginePage::fullScreenRequested,
             this,
@@ -42,3 +44,4 @@ void MainWindow::fullScreenRequested(QWebEngineFullScreenRequest request)
         m_fullScreenWindow.reset();
     }
 }
+

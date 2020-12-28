@@ -51,8 +51,8 @@
 import QtQuick 2.0
 
 Item {
-    width: 100
-    height: 100
+    width: 50
+    height: 50
 
     property real xAxisValue: 0
     property real yAxisValue: 0
@@ -75,7 +75,7 @@ Item {
             var targetY = (yAxisValue + 1) / 2 * height;
             context.fillStyle = "red";
             context.beginPath();
-            context.arc(targetX, targetY, 5, 0, 2 * Math.PI, false);
+            context.arc(targetX, targetY, 2.5, 0, Math.PI, false);
             context.closePath();
             context.fill();
         }

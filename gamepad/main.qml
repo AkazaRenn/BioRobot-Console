@@ -57,8 +57,8 @@ import QtGamepad 1.0
 Item {
     id: applicationWindow1
     visible: true
-//    width: 400
-//    height: 300
+    width: 400
+    height: 300
 
     Item {
         id: background
@@ -66,7 +66,7 @@ Item {
 
         ColumnLayout {
             anchors.fill: parent
-            anchors.margins: 8
+            anchors.margins: 4
             RowLayout {
                 id: topRow
                 width: parent.width
@@ -91,12 +91,12 @@ Item {
                     Layout.alignment: Qt.AlignCenter
                     Layout.fillWidth: true
                     height: guideButton.height
-                    width: guideButton.width + 16 + backButton.width + startButton.width
+                    width: guideButton.width + 8 + backButton.width + startButton.width
                     ButtonImage {
                         id: backButton
                         anchors.verticalCenter: parent.verticalCenter
                         anchors.right: guideButton.left
-                        anchors.rightMargin: 8
+                        anchors.rightMargin: 4
                         source: "qrc:/gamepad/xboxControllerBack.png"
                         active: gamepad.buttonSelect
                     }
@@ -109,7 +109,7 @@ Item {
                     ButtonImage {
                         anchors.verticalCenter: parent.verticalCenter
                         anchors.left: guideButton.right
-                        anchors.leftMargin: 8
+                        anchors.leftMargin: 4
                         id: startButton
                         source: "qrc:/gamepad/xboxControllerStart.png"
                         active: gamepad.buttonStart
@@ -181,8 +181,8 @@ Item {
                 }
 
                 Item {
-                    width: 200
-                    height: 200
+                    width: 100
+                    height: 100
                     Layout.alignment: Qt.AlignRight
                     ButtonImage {
                         id: buttonA
