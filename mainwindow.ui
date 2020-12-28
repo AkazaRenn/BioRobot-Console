@@ -26,13 +26,6 @@
       <property name="resizeMode">
        <enum>QQuickWidget::SizeRootObjectToView</enum>
       </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QQuickWidget" name="cameraWidget">
-      <property name="resizeMode">
-       <enum>QQuickWidget::SizeRootObjectToView</enum>
-      </property>
       <property name="source">
        <url>
         <string>qrc:/trajectory/3d_points_view.qml</string>
@@ -46,7 +39,7 @@
        <bool>true</bool>
       </property>
       <property name="sizePolicy">
-       <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+       <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
         <horstretch>0</horstretch>
         <verstretch>0</verstretch>
        </sizepolicy>

@@ -10,10 +10,14 @@ CONFIG += c++11
 
 SOURCES += \
     main.cpp \
-    mainwindow.cpp
+    mainwindow.cpp \
+    video/fullscreennotification.cpp \
+    video/fullscreenwindow.cpp
 
 HEADERS += \
-    mainwindow.h
+    mainwindow.h \
+    video/fullscreennotification.h \
+    video/fullscreenwindow.h
 
 FORMS += \
     mainwindow.ui

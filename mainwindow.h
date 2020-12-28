@@ -1,8 +1,12 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
+#include "video/fullscreenwindow.h"
+
 #include <QMainWindow>
 #include <QQuickWidget>
+#include <QWebEngineView>
+#include <QWebEngineFullScreenRequest>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -18,5 +22,10 @@ public:
 
 private:
     Ui::MainWindow *ui;
+    QWebEngineView *m_view;
+    QScopedPointer<FullScreenWindow> m_fullScreenWindow;
+
+private slots:
+    void fullScreenRequested(QWebEngineFullScreenRequest request);
 };
 #endif // MAINWINDOW_H

@@ -37,8 +37,8 @@ import QtDataVisualization 1.0
 Rectangle {
     id: mainView
     //! [1]
-    width: 500
-    height: 500
+//    width: 500
+//    height: 500
 
     //! [4]
     Item {
