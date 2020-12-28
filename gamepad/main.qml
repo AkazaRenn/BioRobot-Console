@@ -54,13 +54,11 @@ import QtQuick.Layouts 1.1
 import QtQuick.Window 2.0
 import QtGamepad 1.0
 
-Window {
+Item {
     id: applicationWindow1
     visible: true
-    width: 800
-    height: 600
-    title: qsTr("QtGamepad Example")
-    color: "#363330"
+//    width: 800
+//    height: 600
 
     Item {
         id: background
@@ -78,7 +76,7 @@ Window {
                     ButtonImage {
                         id: leftTrigger
                         Layout.alignment: Qt.AlignCenter
-                        source: "xboxControllerLeftTrigger.png"
+                        source: "qrc:/gamepad/xboxControllerLeftTrigger.png"
                         active: gamepad.buttonL2 != 0
                     }
                     ProgressBar {
@@ -99,13 +97,13 @@ Window {
                         anchors.verticalCenter: parent.verticalCenter
                         anchors.right: guideButton.left
                         anchors.rightMargin: 8
-                        source: "xboxControllerBack.png"
+                        source: "qrc:/gamepad/xboxControllerBack.png"
                         active: gamepad.buttonSelect
                     }
                     ButtonImage {
                         id: guideButton
                         anchors.centerIn: parent
-                        source: "xboxControllerButtonGuide.png"
+                        source: "qrc:/gamepad/xboxControllerButtonGuide.png"
                         active: gamepad.buttonGuide
                     }
                     ButtonImage {
@@ -113,7 +111,7 @@ Window {
                         anchors.left: guideButton.right
                         anchors.leftMargin: 8
                         id: startButton
-                        source: "xboxControllerStart.png"
+                        source: "qrc:/gamepad/xboxControllerStart.png"
                         active: gamepad.buttonStart
                     }
                 }
@@ -125,7 +123,7 @@ Window {
                     ButtonImage {
                         id: rightTrigger
                         Layout.alignment: Qt.AlignCenter
-                        source: "xboxControllerRightTrigger.png"
+                        source: "qrc:/gamepad/xboxControllerRightTrigger.png"
                         active: gamepad.buttonR2 != 0
                     }
 
@@ -141,7 +139,7 @@ Window {
                 id: middleRow
                 ButtonImage {
                     id: buttonL1
-                    source: "xboxControllerLeftShoulder.png"
+                    source: "qrc:/gamepad/xboxControllerLeftShoulder.png"
                     active: gamepad.buttonL1
                 }
                 Item {
@@ -151,7 +149,7 @@ Window {
 
                 ButtonImage {
                     id: buttonR1
-                    source: "xboxControllerRightShoulder.png"
+                    source: "qrc:/gamepad/xboxControllerRightShoulder.png"
                     active: gamepad.buttonR1
                 }
             }
@@ -190,28 +188,28 @@ Window {
                         id: buttonA
                         anchors.bottom: parent.bottom
                         anchors.horizontalCenter: parent.horizontalCenter
-                        source: "xboxControllerButtonA.png";
+                        source: "qrc:/gamepad/xboxControllerButtonA.png";
                         active: gamepad.buttonA
                     }
                     ButtonImage {
                         id: buttonB
                         anchors.right: parent.right
                         anchors.verticalCenter: parent.verticalCenter
-                        source: "xboxControllerButtonB.png";
+                        source: "qrc:/gamepad/xboxControllerButtonB.png";
                         active: gamepad.buttonB
                     }
                     ButtonImage {
                         id: buttonX
                         anchors.left: parent.left
                         anchors.verticalCenter: parent.verticalCenter
-                        source: "xboxControllerButtonX.png";
+                        source: "qrc:/gamepad/xboxControllerButtonX.png";
                         active: gamepad.buttonX
                     }
                     ButtonImage {
                         id: buttonY
                         anchors.top: parent.top
                         anchors.horizontalCenter: parent.horizontalCenter
-                        source: "xboxControllerButtonY.png";
+                        source: "qrc:/gamepad/xboxControllerButtonY.png";
                         active: gamepad.buttonY
                     }
                 }
@@ -219,10 +217,10 @@ Window {
         }
     }
 
-    Connections {
-        target: GamepadManager
-        onGamepadConnected: gamepad.deviceId = deviceId
-    }
+//    Connections {
+//        target: GamepadManager
+//        onGamepadConnected: gamepad.deviceId = deviceId
+//    }
 
     Gamepad {
         id: gamepad

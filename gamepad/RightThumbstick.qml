@@ -51,60 +51,23 @@
 import QtQuick 2.0
 import QtGamepad 1.0
 
-Item {
+ButtonImage {
+
     property Gamepad gamepad
 
-    width: dpadImage.sourceSize.width
-    height: dpadImage.sourceSize.height
-    Image {
-        id: dpadImage
-        anchors.fill: parent
-        source: "xboxControllerDPad.png"
-    }
+    id: rightStickButton
+    source: "qrc:/gamepad/xboxControllerRightThumbstick.png"
+    active: gamepad.buttonR3
 
-    Rectangle {
-        id: upArea
-        visible: gamepad.buttonUp
-        color: "#3814abff"
-        radius: 5
+    JoystickViewer {
+        id: rightJoystick
         anchors.top: parent.top
-        anchors.horizontalCenter: parent.horizontalCenter
-        width: parent.width * 0.3
-        height: parent.height * 0.3
-        anchors.topMargin: parent.height * 0.05
-    }
-    Rectangle {
-        id: downArea
-        visible: gamepad.buttonDown
-        color: "#3814abff"
-        radius: 5
-        width: parent.width * 0.3
-        height: parent.height * 0.3
-        anchors.bottom: parent.bottom
-        anchors.bottomMargin: parent.height * 0.05
-        anchors.horizontalCenter: parent.horizontalCenter
-    }
-    Rectangle {
-        id: leftArea
-        visible: gamepad.buttonLeft
-        color: "#3814abff"
-        radius: 5
-        width: parent.width * 0.3
-        height: parent.height * 0.3
-        anchors.left: parent.left
-        anchors.leftMargin: parent.width * 0.05
-        anchors.verticalCenter: parent.verticalCenter
-    }
-
-    Rectangle {
-        id: rightArea
-        visible: gamepad.buttonRight
-        color: "#3814abff"
-        radius: 5
-        width: parent.width * 0.3
-        height: parent.height * 0.3
         anchors.right: parent.right
-        anchors.rightMargin: parent.width * 0.05
-        anchors.verticalCenter: parent.verticalCenter
+        anchors.margins: parent.width * (3 / 153)
+        width: parent.width * (140 / 153)
+        xAxisValue: gamepad.axisRightX
+        yAxisValue: gamepad.axisRightY
+        height: width
     }
 }
+

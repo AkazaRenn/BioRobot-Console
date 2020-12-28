@@ -56,7 +56,7 @@ ButtonImage {
     property Gamepad gamepad
 
     id: leftStickButton
-    source: "xboxControllerLeftThumbstick.png"
+    source: "qrc:/gamepad/xboxControllerLeftThumbstick.png"
     active: gamepad.buttonL3
 
     JoystickViewer {

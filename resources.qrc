@@ -1,0 +1,24 @@
+<RCC>
+    <qresource prefix="/">
+        <file>gamepad/ButtonImage.qml</file>
+        <file>gamepad/DPad.qml</file>
+        <file>gamepad/JoystickViewer.qml</file>
+        <file>gamepad/LeftThumbstick.qml</file>
+        <file>gamepad/main.qml</file>
+        <file>gamepad/RightThumbstick.qml</file>
+        <file>gamepad/xboxControllerBack.png</file>
+        <file>gamepad/xboxControllerButtonA.png</file>
+        <file>gamepad/xboxControllerButtonB.png</file>
+        <file>gamepad/xboxControllerButtonGuide.png</file>
+        <file>gamepad/xboxControllerButtonX.png</file>
+        <file>gamepad/xboxControllerButtonY.png</file>
+        <file>gamepad/xboxControllerDPad.png</file>
+        <file>gamepad/xboxControllerLeftShoulder.png</file>
+        <file>gamepad/xboxControllerLeftThumbstick.png</file>
+        <file>gamepad/xboxControllerLeftTrigger.png</file>
+        <file>gamepad/xboxControllerRightShoulder.png</file>
+        <file>gamepad/xboxControllerRightThumbstick.png</file>
+        <file>gamepad/xboxControllerRightTrigger.png</file>
+        <file>gamepad/xboxControllerStart.png</file>
+    </qresource>
+</RCC>

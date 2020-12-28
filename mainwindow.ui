@@ -25,13 +25,6 @@
     </property>
     <layout class="QVBoxLayout" name="verticalLayout">
      <item>
-      <widget class="QQuickWidget" name="cameraWidget">
-       <property name="resizeMode">
-        <enum>QQuickWidget::SizeRootObjectToView</enum>
-       </property>
-      </widget>
-     </item>
-     <item>
       <widget class="QQuickWidget" name="tradjWidget">
        <property name="resizeMode">
         <enum>QQuickWidget::SizeRootObjectToView</enum>
@@ -39,9 +32,27 @@
       </widget>
      </item>
      <item>
-      <widget class="QQuickWidget" name="gamepadWidget">
+      <widget class="QQuickWidget" name="cameraWidget">
        <property name="resizeMode">
         <enum>QQuickWidget::SizeRootObjectToView</enum>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QQuickWidget" name="gamepadWidget">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="resizeMode">
+        <enum>QQuickWidget::SizeRootObjectToView</enum>
+       </property>
+       <property name="source">
+        <url>
+         <string>qrc:/gamepad/main.qml</string>
+        </url>
        </property>
       </widget>
      </item>
