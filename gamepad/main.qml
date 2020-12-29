@@ -224,6 +224,7 @@ Item {
 
     Gamepad {
         id: gamepad
+        objectName: "gamepad"
         deviceId: GamepadManager.connectedGamepads.length > 0 ? GamepadManager.connectedGamepads[0] : -1
     }
 }

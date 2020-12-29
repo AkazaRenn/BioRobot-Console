@@ -75,7 +75,7 @@ Item {
             var targetY = (yAxisValue + 1) / 2 * height;
             context.fillStyle = "red";
             context.beginPath();
-            context.arc(targetX, targetY, 2.5, 0, Math.PI, false);
+            context.arc(targetX, targetY, 2.5, 0, 2 * Math.PI, false);
             context.closePath();
             context.fill();
         }
