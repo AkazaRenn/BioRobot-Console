@@ -1,13 +1,18 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
+#define GAMEPAD_POLLING_INTERVAL 8
+#define GAMEPAD_TCP_PORT 51234
+
 #include "video/fullscreenwindow.h"
+#include "gamepad/gamepadreader.h"
 
 #include <QMainWindow>
 #include <QQuickWidget>
 #include <QWebEngineView>
 #include <QWebEngineFullScreenRequest>
 #include <QGamepad>
+#include <QTcpSocket>
 
 QT_BEGIN_NAMESPACE
 namespace Ui
@@ -30,10 +35,12 @@ private:
     QScopedPointer<FullScreenWindow> m_fullScreenWindow;
     QGamepad *gamepad;
     QTimer *gamepadPollingTimer;
-    void pollGamepadInput();
+//    void pollGamepadInput();
+    GamepadReader* gamepadReader;
+    QTcpSocket* gamepadSocket;
 
 private slots:
     void fullScreenRequested(QWebEngineFullScreenRequest request);
-    void on_connectButton_clicked();
+    void onConnectButtonClicked();
 };
 #endif // MAINWINDOW_H
