@@ -9,7 +9,7 @@ class GamepadReader : public QObject
 {
     Q_OBJECT
 public:
-    explicit GamepadReader(QObject *parent = nullptr);
+    explicit GamepadReader(QObject *parent = nullptr, QTcpSocket* socket = nullptr, QGamepad* gamepad = nullptr);
     void readGamepad();
 
     void setSocket(QTcpSocket* value);
@@ -21,6 +21,7 @@ public:
 private:
     QTcpSocket* socket;
     QGamepad* gamepad;
+    QByteArray buildTcpMsg();
 
 signals:
 

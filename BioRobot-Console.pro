@@ -10,16 +10,16 @@ CONFIG += c++11
 
 SOURCES += \
     gamepad/gamepadreader.cpp \
-    gamepad/readinput.cpp \
     main.cpp \
     mainwindow.cpp \
+    trajectory/trajectoryreceiver.cpp \
     video/fullscreennotification.cpp \
     video/fullscreenwindow.cpp
 
 HEADERS += \
     gamepad/gamepadreader.h \
-    gamepad/readinput.h \
     mainwindow.h \
+    trajectory/trajectoryreceiver.h \
     video/fullscreennotification.h \
     video/fullscreenwindow.h
 

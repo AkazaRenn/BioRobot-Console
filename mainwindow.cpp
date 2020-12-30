@@ -27,13 +27,18 @@ MainWindow::MainWindow(QWidget *parent)
             &MainWindow::fullScreenRequested);
     m_view->load(QUrl(QStringLiteral("qrc:/index.html")));
 
+    trajectorySocket = new QTcpSocket(this);
+    trajectoryDataModel = ui->tradjWidget->findChild<QObject*>("dataModel");
+    trajectoryReceiver = new TrajectoryReceiver(this, trajectorySocket, trajectoryDataModel);
+    connect(trajectorySocket, &QTcpSocket::readyRead, trajectoryReceiver, QOverload<>::of(&TrajectoryReceiver::updateTrajectory));
+
     gamepadSocket = new QTcpSocket(this);
-    gamepad = ui->gamepadWidget->rootObject()->findChild<QGamepad *>("gamepad");
+    gamepad = ui->gamepadWidget->findChild<QGamepad*>("gamepad");
     gamepadPollingTimer = new QTimer(this);
     gamepadPollingTimer->setSingleShot(true);
     gamepadPollingTimer->setInterval(GAMEPAD_POLLING_INTERVAL);
     gamepadPollingTimer->setTimerType(Qt::PreciseTimer);
-    gamepadReader = new GamepadReader(this);
+    gamepadReader = new GamepadReader(this, gamepadSocket, gamepad);
     connect(gamepadPollingTimer, &QTimer::timeout, gamepadReader, QOverload<>::of(&GamepadReader::readGamepad));
 
     // set robot address to only allow IPv4 and IPv6 formats
@@ -68,12 +73,19 @@ void MainWindow::fullScreenRequested(QWebEngineFullScreenRequest request)
 
 void MainWindow::onConnectButtonClicked()
 {
+    trajectorySocket->connectToHost(QHostAddress(ui->robotAddressEdit->text()), TRAJ_TCP_PORT);
     gamepadSocket->connectToHost(QHostAddress(ui->robotAddressEdit->text()), GAMEPAD_TCP_PORT);
-    if (!gamepadSocket->isValid())
+    if (!(gamepadSocket->isValid() && trajectorySocket->isValid()))
     {
-        ui->robotAddressEdit->setText("INVALID ADDRESS");
+        ui->robotAddressEdit->setPlaceholderText("INVALID ADDRESS");
+        ui->robotAddressEdit->clear();
+        return;
+    }
+    else
+    {
+        ui->connectButton->setText("CONNECTED");
+        ui->connectButton->setDisabled(true);
     }
 
-    gamepadReader->setGamepad(gamepad);
     gamepadPollingTimer->start();
 }
