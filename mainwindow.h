@@ -37,7 +37,6 @@ private:
     QScopedPointer<FullScreenWindow> m_fullScreenWindow;
     QGamepad *gamepad;
     QTimer *gamepadPollingTimer;
-//    void pollGamepadInput();
     GamepadReader* gamepadReader;
     QTcpSocket* gamepadSocket;
     QTcpSocket* trajectorySocket;

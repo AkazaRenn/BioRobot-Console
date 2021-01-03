@@ -16,7 +16,7 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
 
-    ((QVBoxLayout *)ui->centralwidget->layout())->insertWidget(0, m_view);
+    ((QHBoxLayout *)ui->centralwidget->layout())->insertWidget(0, m_view);
     m_view->settings()->setAttribute(QWebEngineSettings::FullScreenSupportEnabled, true);
     QSizePolicy m_view_size_policy = m_view->sizePolicy();
     m_view_size_policy.setHorizontalPolicy(QSizePolicy::Expanding);
@@ -75,16 +75,16 @@ void MainWindow::onConnectButtonClicked()
 {
     trajectorySocket->connectToHost(QHostAddress(ui->robotAddressEdit->text()), TRAJ_TCP_PORT);
     gamepadSocket->connectToHost(QHostAddress(ui->robotAddressEdit->text()), GAMEPAD_TCP_PORT);
-    if (!(gamepadSocket->isValid() && trajectorySocket->isValid()))
+    if (gamepadSocket->isOpen() && trajectorySocket->isOpen())
+    {
+        ui->connectButton->setText("CONNECTED");
+        ui->connectButton->setDisabled(true);
+    }
+    else
     {
         ui->robotAddressEdit->setPlaceholderText("INVALID ADDRESS");
         ui->robotAddressEdit->clear();
         return;
-    }
-    else
-    {
-        ui->connectButton->setText("CONNECTED");
-        ui->connectButton->setDisabled(true);
     }
 
     gamepadPollingTimer->start();

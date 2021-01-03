@@ -34,5 +34,14 @@ void GamepadReader::setGamepad(QGamepad *value)
 
 QByteArray GamepadReader::buildTcpMsg()
 {
-    return "It's a TCP msg from gamepad";
+    double joysticks[] = {gamepad->axisLeftX(), gamepad->axisLeftY(), gamepad->axisRightX(), gamepad->axisRightY(),
+                         gamepad->buttonL2(), gamepad->buttonR2()};
+    char buttons[] = {gamepad->buttonUp(), gamepad->buttonDown(), gamepad->buttonLeft(), gamepad->buttonRight(),
+                      gamepad->buttonX(), gamepad->buttonY(), gamepad->buttonA(), gamepad->buttonB(),
+                      gamepad->buttonL1(), gamepad->buttonL3(), gamepad->buttonR1(), gamepad->buttonR3(),
+                      gamepad->buttonSelect(), gamepad->buttonCenter(), gamepad->buttonStart()};
+    char bytes[sizeof(joysticks) * 8 + sizeof(buttons)];
+    memcpy(bytes, joysticks, sizeof(joysticks) * sizeof(double));
+    memcpy(bytes + sizeof(joysticks) * sizeof(double), buttons, sizeof(buttons));
+    return QByteArray(bytes, sizeof(bytes));
 }
