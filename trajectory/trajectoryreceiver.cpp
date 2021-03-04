@@ -21,14 +21,12 @@ void TrajectoryReceiver::setSocket(QTcpSocket *value)
 
 void TrajectoryReceiver::updateTrajectory()
 {
-    QVector<double> data;
-    QDataStream stream(socket->readAll());
-    stream >> data;
-    double xPos = data[0];
-    double yPos = data[1];
-    double zPos = data[2];
+    QByteArray data = socket->readAll();
+    double array[3];
+    memcpy(array, data, data.size());
+    printf("Adding x: %.4f, y: %.4f, z: %.4f\n", array[0], array[1], array[2]);
     QMetaObject::invokeMethod(dataModel, "addPoint",
-                              Q_ARG(QVariant, QVariant(xPos)),
-                              Q_ARG(QVariant, QVariant(yPos)),
-                              Q_ARG(QVariant, QVariant(zPos)));
+                              Q_ARG(QVariant, QVariant(array[0])),
+                              Q_ARG(QVariant, QVariant(array[1])),
+                              Q_ARG(QVariant, QVariant(array[2])));
 }

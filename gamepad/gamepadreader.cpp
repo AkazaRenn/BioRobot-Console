@@ -9,7 +9,8 @@ GamepadReader::GamepadReader(QObject *parent, QTcpSocket* socket, QGamepad* game
 
 void GamepadReader::readGamepad()
 {
-    socket->write(buildTcpMsg());
+    if(socket->isWritable())
+        socket->write(buildTcpMsg());
 }
 
 void GamepadReader::setSocket(QTcpSocket* value)
@@ -43,5 +44,6 @@ QByteArray GamepadReader::buildTcpMsg()
     char bytes[sizeof(joysticks) * 8 + sizeof(buttons)];
     memcpy(bytes, joysticks, sizeof(joysticks) * sizeof(double));
     memcpy(bytes + sizeof(joysticks) * sizeof(double), buttons, sizeof(buttons));
+    printf("%s\n", bytes);
     return QByteArray(bytes, sizeof(bytes));
 }

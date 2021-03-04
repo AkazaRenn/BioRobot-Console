@@ -28,20 +28,21 @@ MainWindow::MainWindow(QWidget *parent)
     m_view->load(QUrl(QStringLiteral("qrc:/index.html")));
 
     trajectorySocket = new QTcpSocket(this);
-    trajectoryDataModel = ui->tradjWidget->findChild<QObject*>("dataModel");
+    trajectoryDataModel = ui->tradjWidget->rootObject()->findChild<QObject*>("dataModel");
     trajectoryReceiver = new TrajectoryReceiver(this, trajectorySocket, trajectoryDataModel);
     connect(trajectorySocket, &QTcpSocket::readyRead, trajectoryReceiver, QOverload<>::of(&TrajectoryReceiver::updateTrajectory));
 
     gamepadSocket = new QTcpSocket(this);
-    gamepad = ui->gamepadWidget->findChild<QGamepad*>("gamepad");
+    gamepad = ui->gamepadWidget->rootObject()->findChild<QGamepad*>("gamepad");
     gamepadPollingTimer = new QTimer(this);
-    gamepadPollingTimer->setSingleShot(true);
+//    gamepadPollingTimer->setSingleShot(true);
     gamepadPollingTimer->setInterval(GAMEPAD_POLLING_INTERVAL);
     gamepadPollingTimer->setTimerType(Qt::PreciseTimer);
     gamepadReader = new GamepadReader(this, gamepadSocket, gamepad);
     connect(gamepadPollingTimer, &QTimer::timeout, gamepadReader, QOverload<>::of(&GamepadReader::readGamepad));
 
     // set robot address to only allow IPv4 and IPv6 formats
+    ui->robotAddressEdit->setText("127.0.0.1");
     ui->robotAddressEdit->setValidator(new QRegExpValidator(QRegExp(
         "((^\\s*((([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5]))\\s*$)|(^\\s*((([0-9A-Fa-f]{1,4}:){7}([0-9A-Fa-f]{1,4}|:))|(([0-9A-Fa-f]{1,4}:){6}(:[0-9A-Fa-f]{1,4}|((25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]?\\d)(\\.(25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]?\\d)){3})|:))|(([0-9A-Fa-f]{1,4}:){5}(((:[0-9A-Fa-f]{1,4}){1,2})|:((25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]?\\d)(\\.(25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]?\\d)){3})|:))|(([0-9A-Fa-f]{1,4}:){4}(((:[0-9A-Fa-f]{1,4}){1,3})|((:[0-9A-Fa-f]{1,4})?:((25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]?\\d)(\\.(25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]?\\d)){3}))|:))|(([0-9A-Fa-f]{1,4}:){3}(((:[0-9A-Fa-f]{1,4}){1,4})|((:[0-9A-Fa-f]{1,4}){0,2}:((25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]?\\d)(\\.(25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]?\\d)){3}))|:))|(([0-9A-Fa-f]{1,4}:){2}(((:[0-9A-Fa-f]{1,4}){1,5})|((:[0-9A-Fa-f]{1,4}){0,3}:((25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]?\\d)(\\.(25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]?\\d)){3}))|:))|(([0-9A-Fa-f]{1,4}:){1}(((:[0-9A-Fa-f]{1,4}){1,6})|((:[0-9A-Fa-f]{1,4}){0,4}:((25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]?\\d)(\\.(25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]?\\d)){3}))|:))|(:(((:[0-9A-Fa-f]{1,4}){1,7})|((:[0-9A-Fa-f]{1,4}){0,5}:((25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]?\\d)(\\.(25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]?\\d)){3}))|:)))(%.+)?\\s*$))")));
 
@@ -75,17 +76,17 @@ void MainWindow::onConnectButtonClicked()
 {
     trajectorySocket->connectToHost(QHostAddress(ui->robotAddressEdit->text()), TRAJ_TCP_PORT);
     gamepadSocket->connectToHost(QHostAddress(ui->robotAddressEdit->text()), GAMEPAD_TCP_PORT);
-    if (gamepadSocket->isOpen() && trajectorySocket->isOpen())
-    {
-        ui->connectButton->setText("CONNECTED");
-        ui->connectButton->setDisabled(true);
-    }
-    else
-    {
-        ui->robotAddressEdit->setPlaceholderText("INVALID ADDRESS");
-        ui->robotAddressEdit->clear();
-        return;
-    }
+//    if (gamepadSocket->isOpen() && trajectorySocket->isOpen())
+//    {
+//        ui->connectButton->setText("CONNECTED");
+//        ui->connectButton->setDisabled(true);
+//    }
+//    else
+//    {
+//        ui->robotAddressEdit->setPlaceholderText("INVALID ADDRESS");
+//        ui->robotAddressEdit->clear();
+//        return;
+//    }
 
     gamepadPollingTimer->start();
 }
