@@ -42,9 +42,9 @@ void TrajectoryReceiver::updateTrajectory()
 //            if(abs(array[i][3] - Z_SHIFT) > 0.2)
 //                velZ += tDiff * -1 * (array[i][3] - Z_SHIFT);
 //            currZ += tDiff * velZ;
-            currX += tDiff * tDiff * array[i][1];
-            currY += tDiff * tDiff * array[i][2];
-            currZ += tDiff * tDiff * array[i][3];
+            currX += tDiff * tDiff * -1 * (array[i][1] - X_SHIFT);
+            currY += tDiff * tDiff * -1 * (array[i][2] - Y_SHIFT);
+            currZ += tDiff * tDiff * -1 * (array[i][3] - Z_SHIFT);
         }
         t = array[i][0];
     }
